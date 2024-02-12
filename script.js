@@ -1,7 +1,10 @@
 const keyboard = document.querySelector(".keyboard");
 const wordDisplay = document.querySelector(".word-display");
+const guessText = document.querySelector(".guesses-text b");
+const gameModal = document.querySelector(".game-modal");
 
-let currentWord;
+let currentWord, wrongGuessCount=0;
+const maxGuesses = 6;
 
 const getRandomWord = () => {
    
@@ -27,7 +30,11 @@ if(letter === clickedLetter) {
 }
     });
     } else {
-
+      wrongGuessCount++;
+    }
+    guessText.innerHTML = `${wrongGuessCount} / ${maxGuesses}`;
+    if(wrongGuessCount >= 6) {
+      gameModal.style.display = "flex";
     }
 }
 
