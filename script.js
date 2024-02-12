@@ -2,7 +2,7 @@ const keyboard = document.querySelector(".keyboard");
 const wordDisplay = document.querySelector(".word-display");
 const guessText = document.querySelector(".guesses-text b");
 const gameModal = document.querySelector(".game-modal");
-
+const hangmanImage = document.querySelector(".hangman-box img")
 let currentWord, wrongGuessCount=0;
 const maxGuesses = 6;
 
@@ -31,9 +31,10 @@ if(letter === clickedLetter) {
     });
     } else {
       wrongGuessCount++;
+      hangmanImage.src= `images/hangman-${wrongGuessCount}.svg`;
     }
     guessText.innerHTML = `${wrongGuessCount} / ${maxGuesses}`;
-    if(wrongGuessCount >= 6) {
+    if(wrongGuessCount >= maxGuesses) {
       gameModal.style.display = "flex";
     }
 }
